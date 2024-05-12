@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="475.0" spacing="20.0" style="-fx-background-color: #fff; -fx-background-radius: 15px; -fx-border-radius: 15px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Sanphamtrongkho_controller">
+   <children>
+      <ImageView fx:id="img" fitHeight="75.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets left="15.0" top="7.0" />
+         </HBox.margin>
+         <image>
+            <Image url="@../../Sanpham/iphone-15-pro-max-blue-thumbnew-600x600.jpg" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="100.0" prefWidth="252.0" spacing="20.0">
+         <children>
+            <Label fx:id="name" prefHeight="26.0" prefWidth="247.0" text="Samsung Galaxy">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="number" prefHeight="17.0" prefWidth="151.0" style="-fx-opacity: 0.6;" text="Số lượng : 5 " />
+         </children>
+      </VBox>
+   </children>
+</HBox>

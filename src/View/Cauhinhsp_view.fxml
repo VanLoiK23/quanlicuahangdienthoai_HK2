@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Add_cauhinh_sp_controller">
+   <children>
+      <Label fx:id="label" layoutX="67.0" layoutY="16.0" style="-fx-background-color: #fff;" text="Tạo mới cấu hình cho sản phẩm">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="36.0" layoutY="43.0" prefHeight="0.0" prefWidth="853.0" style="-fx-background-color: yellow;" />
+      <Label layoutX="20.0" layoutY="90.0" prefHeight="17.0" prefWidth="121.0" text="Ram">
+         <font>
+            <Font name="Arial Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="216.0" layoutY="90.0" prefHeight="17.0" prefWidth="121.0" text="Rom">
+         <font>
+            <Font name="Arial Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="411.0" layoutY="90.0" prefHeight="17.0" prefWidth="121.0" text="Màu sắc">
+         <font>
+            <Font name="Arial Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="612.0" layoutY="90.0" prefHeight="17.0" prefWidth="121.0" text="Giá nhập">
+         <font>
+            <Font name="Arial Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="773.0" layoutY="90.0" prefHeight="17.0" prefWidth="121.0" text="Giá xuất">
+         <font>
+            <Font name="Arial Italic" size="17.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="text_ram" layoutX="20.0" layoutY="122.0" prefHeight="25.0" prefWidth="139.0" styleClass="textfield" stylesheets="@../Css/style_for_add_product.css">
+         <padding>
+            <Insets left="7.0" />
+         </padding>
+      </ChoiceBox>
+      <TextField fx:id="text_priceX" layoutX="773.0" layoutY="122.0" prefHeight="25.0" prefWidth="115.0" styleClass="textfield" stylesheets="@../Css/style_for_add_product.css">
+         <padding>
+            <Insets left="7.0" />
+         </padding>
+      </TextField>
+      <ChoiceBox fx:id="text_rom" layoutX="216.0" layoutY="121.0" prefHeight="25.0" prefWidth="139.0" styleClass="textfield" stylesheets="@../Css/style_for_add_product.css">
+         <padding>
+            <Insets left="7.0" />
+         </padding>
+      </ChoiceBox>
+      <ChoiceBox fx:id="text_color" layoutX="411.0" layoutY="121.0" prefHeight="25.0" prefWidth="139.0" styleClass="textfield" stylesheets="@../Css/style_for_add_product.css">
+         <padding>
+            <Insets left="7.0" />
+         </padding>
+      </ChoiceBox>
+      <TextField fx:id="text_priceN" layoutX="615.0" layoutY="123.0" prefHeight="25.0" prefWidth="115.0" styleClass="textfield" stylesheets="@../Css/style_for_add_product.css">
+         <padding>
+            <Insets left="7.0" />
+         </padding>
+      </TextField>
+      <ScrollPane layoutX="5.0" layoutY="165.0" prefHeight="255.0" prefWidth="769.0">
+         <content>
+            <TableView fx:id="sanpham" prefHeight="251.0" prefWidth="765.0" style="-fx-background-color: white;">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="102.00002562999725" text="STT" />
+                <TableColumn fx:id="ram" prefWidth="134.66668701171875" text="RAM" />
+                  <TableColumn fx:id="rom" prefWidth="130.0" text="ROM" />
+                  <TableColumn fx:id="color" prefWidth="117.3333740234375" text="Màu sắc" />
+                  <TableColumn fx:id="priceNhap" prefWidth="139.33334350585938" text="Giá nhập" />
+                  <TableColumn fx:id="priceXuat" prefWidth="143.33331298828125" text="Giá xuất" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Button layoutX="780.0" layoutY="175.0" mnemonicParsing="false" onMouseClicked="#add_ch" prefHeight="29.0" prefWidth="118.0" styleClass="add" stylesheets="@../Css/style_for_add_product.css" text="Thêm cấu hình">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="780.0" layoutY="235.0" mnemonicParsing="false" onMouseClicked="#edit_ch" prefHeight="29.0" prefWidth="118.0" styleClass="update" stylesheets="@../Css/style_for_add_product.css" text="Sửa cấu hình">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="780.0" layoutY="293.0" mnemonicParsing="false" onMouseClicked="#delete_ch" prefHeight="29.0" prefWidth="118.0" styleClass="delete" stylesheets="@../Css/style_for_add_product.css" text="Xóa cấu hình">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <HBox alignment="CENTER" layoutX="753.0" layoutY="54.0" onMouseClicked="#load" prefHeight="27.0" prefWidth="101.0" spacing="20.0" style="-fx-background-color: #87878d; -fx-background-radius: 30;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../load.jpg" />
+               </image>
+            </ImageView>
+            <Label text="Refresh" textFill="#2e2e2f">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <Button fx:id="bt" layoutX="374.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#add_sp" prefHeight="34.0" prefWidth="164.0" style="-fx-background-color: #9df2cd; -fx-text-fill: #22a381;" styleClass="add" stylesheets="@../Css/style_for_add_product.css" text="Thêm sản phẩm mới" textFill="#22a381">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

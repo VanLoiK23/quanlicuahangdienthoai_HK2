@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Main_Controller">
+   <top>
+      <HBox maxHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" spacing="20.0" styleClass="white-background" stylesheets="@../Css/styleforhomepage.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="218.0" styleClass="t" stylesheets="@../Css/styleforhomepage.css" text="Quán lý kho" textFill="#ff5056">
+               <font>
+                  <Font name="Edwardian Script ITC" size="36.0" />
+               </font>
+            </Label>
+            <Separator halignment="LEFT" maxHeight="-Infinity" orientation="VERTICAL" prefHeight="33.0" prefWidth="5.0">
+               <HBox.margin>
+                  <Insets top="7.0" />
+               </HBox.margin>
+            </Separator>
+            <HBox fx:id="Search" alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="290.0" styleClass="round-layout" stylesheets="@../Css/styleforhomepage.css">
+               <children>
+                  <TextField fx:id="search" prefHeight="25.0" prefWidth="256.0" promptText="Search" styleClass="transparent" stylesheets="@../Css/styleforhomepage.css" />
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../search.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets top="7.0" />
+               </HBox.margin>
+            </HBox>
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="41.0" prefWidth="205.0" text="Huỳnh Văn Loi">
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../User.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="547.0" prefWidth="195.0" styleClass="white-background" stylesheets="@../Css/styleforhomepage.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="vBox" prefHeight="487.0" prefWidth="240.0">
+               <children>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#homepage" prefHeight="100.0" prefWidth="240.0" spacing="15.0" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../homepage.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Trang chủ">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <styleClass>
+                        <String fx:value="selected" />
+                        <String fx:value="mouse-moved" />
+                     </styleClass>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#selected" prefHeight="35.0" prefWidth="191.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.3;" styleClass="img_menu">
+                           <image>
+                              <Image url="@../../sp.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Sản phẩm">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+                  <HBox fx:id="attribute" alignment="CENTER" onMouseClicked="#thuoctinh" prefHeight="40.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.4;" styleClass="img_menu">
+                           <image>
+                              <Image url="@../../attribute.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Thuộc tính">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+                  <HBox fx:id="attribute" alignment="CENTER" onMouseClicked="#kho" prefHeight="26.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.3;" styleClass="img_menu">
+                           <image>
+                              <Image url="@../../khuvuc.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="123.0" styleClass="text" text="Khu vực kho">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets bottom="7.0" top="7.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#nhap" prefHeight="40.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1; -fx-scale-y: 1;" styleClass="img_menu">
+                           <image>
+                              <Image url="@../../nhap.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Phiếu nhập">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#xuat" prefHeight="40.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.1; -fx-background-color: #fff;">
+                           <image>
+                              <Image url="@../../Xuat.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Phiếu xuất">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#khachhang" prefHeight="40.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Khach.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Khách hàng">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#ncc" prefHeight="40.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../cung.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Nhà cung cấp">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#nv" prefHeight="40.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../nhanvien.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Nhân viên">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#taikhoan" prefHeight="40.0" prefWidth="240.0" spacing="5.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../tk.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="151.0" styleClass="text" stylesheets="@../Css/styleforhomepage.css" text="Phản hồi khách hàng">
+                           <font>
+                              <Font name="Times New Roman" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#tk" prefHeight="40.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.4;">
+                           <image>
+                              <Image url="@../../thongke.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="20.0" prefWidth="119.0" styleClass="text" text="Thống kê">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox prefHeight="142.0" prefWidth="240.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <children>
+                  <Separator prefWidth="250.0">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Separator>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#exit" prefHeight="39.0" prefWidth="240.0" spacing="20.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
+               <children>
+                  <ImageView fx:id="img_exit" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../exit.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label lineSpacing="20.0" prefHeight="20.0" prefWidth="147.0" style="-fx-font-weight: bold; -fx-text-fill: red;" styleClass="exit" stylesheets="@../Css/styleforhomepage.css" text="Đăng xuất">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="545.0" prefWidth="941.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-font-weight: bold;" text="Các mẫu điện thoại hot hiện nay">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </Label>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="transparent" stylesheets="@../Css/styleforhomepage.css">
+               <content>
+                  <HBox fx:id="cartPhone" alignment="CENTER" prefHeight="149.0" prefWidth="1005.0" spacing="15.0" styleClass="transparent" stylesheets="@../Css/styleforhomepage.css" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <AnchorPane fx:id="carousel" maxHeight="-Infinity" prefHeight="285.0" prefWidth="996.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="195.0" top="-280.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

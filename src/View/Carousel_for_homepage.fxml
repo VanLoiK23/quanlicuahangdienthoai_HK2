@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Animation_carousel">
+   <children>
+      <ImageView fx:id="img" fitHeight="260.0" fitWidth="950.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane prefHeight="250.0" prefWidth="1007.0">
+         <children>
+            <ImageView fitHeight="34.0" fitWidth="35.0" layoutY="110.0" onMouseClicked="#pre" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Carousel_daube.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="964.0" layoutY="110.0" onMouseClicked="#next" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@../../Carousel_daube.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
