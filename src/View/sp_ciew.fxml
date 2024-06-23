@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.sp_controller">
+   <children>
+      <TableView fx:id="table" layoutY="65.0" prefHeight="338.0" prefWidth="371.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="Mã sp" />
+          <TableColumn fx:id="name" prefWidth="102.66668701171875" text="Tên sp" />
+            <TableColumn fx:id="th" prefWidth="94.66665649414062" text="Thương hiệu " />
+            <TableColumn fx:id="hdh" prefWidth="90.66668701171875" text="Hệ điều hành" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

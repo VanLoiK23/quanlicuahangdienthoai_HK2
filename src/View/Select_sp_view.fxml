@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="705.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Select_sp_controller">
+   <children>
+      <HBox alignment="CENTER" prefHeight="79.0" prefWidth="705.0" style="-fx-background-color: #02cffd;">
+         <children>
+            <Label text="Chi tiết sản phẩm" textFill="#fcfcfc">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="62.0" layoutY="90.0" text="Phiên bản">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="pb" layoutX="62.0" layoutY="123.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 15px; -fx-border-color: black;" />
+      <Label layoutX="489.0" layoutY="90.0" text="Số lượng">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="sl" layoutX="486.0" layoutY="124.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #cccaca; -fx-background-radius: 15px;" />
+      <TableView fx:id="ctsp" layoutY="175.0" prefHeight="200.0" prefWidth="705.0">
+        <columns>
+          <TableColumn fx:id="imei" prefWidth="184.6666921377182" text="Mã imei" />
+          <TableColumn fx:id="nhap" prefWidth="187.99998474121094" text="Mã phiếu nhập" />
+            <TableColumn prefWidth="190.66665649414062" text="Mã phiếu xuất" fx:id="xuat" />
+            <TableColumn fx:id="tinhtrang" prefWidth="133.3333740234375" text="Tình trạng" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

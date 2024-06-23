@@ -64,7 +64,7 @@
    <left>
       <VBox prefHeight="547.0" prefWidth="195.0" styleClass="white-background" stylesheets="@../Css/styleforhomepage.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="vBox" prefHeight="487.0" prefWidth="240.0">
+            <VBox fx:id="vBox" prefHeight="479.0" prefWidth="195.0">
                <children>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#homepage" prefHeight="100.0" prefWidth="240.0" spacing="15.0" stylesheets="@../Css/styleforhomepage.css">
                      <children>
@@ -253,29 +253,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </HBox>
-                  <HBox alignment="CENTER" onMouseClicked="#taikhoan" prefHeight="40.0" prefWidth="240.0" spacing="5.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../tk.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label prefHeight="20.0" prefWidth="151.0" styleClass="text" stylesheets="@../Css/styleforhomepage.css" text="Phản hồi khách hàng">
-                           <font>
-                              <Font name="Times New Roman" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="7.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </HBox>
                   <HBox alignment="CENTER" onMouseClicked="#tk" prefHeight="40.0" prefWidth="240.0" spacing="15.0" styleClass="mouse-moved" stylesheets="@../Css/styleforhomepage.css">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.4;">
@@ -298,7 +275,7 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox prefHeight="142.0" prefWidth="240.0">
+            <HBox prefHeight="25.0" prefWidth="195.0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -326,6 +303,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>

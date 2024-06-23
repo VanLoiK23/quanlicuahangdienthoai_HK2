@@ -15,7 +15,7 @@
    <children>
       <ScrollPane layoutY="75.0" prefHeight="470.0" prefWidth="996.0">
          <content>
-            <TableView prefHeight="467.0" prefWidth="992.0">
+            <TableView fx:id="table" prefHeight="467.0" prefWidth="992.0">
                <columns>
                   <TableColumn fx:id="manv" prefWidth="126.66668713092804" text="Mã nhân viên" />
                   <TableColumn fx:id="name" prefWidth="180.66665649414062" text="Họ tên" />
@@ -23,7 +23,7 @@
                   <TableColumn fx:id="ngaysinh" prefWidth="158.66668701171875" text="Ngày sinh" />
                   <TableColumn fx:id="phone" minWidth="0.0" prefWidth="139.33331298828125" text="Số điện thoại" />
                   <TableColumn fx:id="email" minWidth="0.0" prefWidth="162.66668701171875" text="Email" />
-                  <TableColumn prefWidth="95.99993896484375" text="Chức năng" />
+                  <TableColumn fx:id="edit" prefWidth="95.99993896484375" text="Chức năng" />
                </columns>
             </TableView>
          </content>
@@ -45,31 +45,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </HBox>
-      <HBox alignment="CENTER" layoutX="164.0" layoutY="27.0" onMouseClicked="#select" prefHeight="20.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #9299ed; -fx-background-radius: 30;">
-         <children>
-            <ImageView fitHeight="13.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../xem.png" />
-               </image>
-            </ImageView>
-            <Label text="Chi tiết" textFill="#3b46c5">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="305.0" layoutY="27.0" onMouseClicked="#print" prefHeight="20.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #87878d; -fx-background-radius: 30;">
+      <HBox alignment="CENTER" layoutX="177.0" layoutY="27.0" onMouseClicked="#load" prefHeight="20.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #87878d; -fx-background-radius: 30;">
          <children>
             <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../file.jpg" />
+                  <Image url="@../../load.jpg" />
                </image>
             </ImageView>
-            <Label text="Xuất file" textFill="#2e2e2f">
+            <Label text="Refresh" textFill="#2e2e2f">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

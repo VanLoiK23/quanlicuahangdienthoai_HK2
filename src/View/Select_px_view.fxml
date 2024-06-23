@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="727.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Select_phieuxuat_controller">
+   <children>
+      <HBox alignment="CENTER" layoutX="-6.0" prefHeight="79.0" prefWidth="733.0" style="-fx-background-color: #02cffd;">
+         <children>
+            <Label text="Thông tin phiếu xuất" textFill="#fcfcfc">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="36.0" layoutY="98.0" text="Mã phiếu">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="174.0" layoutY="97.0" text="Nhân viên xuất">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="358.0" layoutY="98.0" text="Khách hàng">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="573.0" layoutY="98.0" text="Thời gian tạo">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="text_ma" layoutX="36.0" layoutY="130.0" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #cccaca;" />
+      <TextField fx:id="nv" layoutX="174.0" layoutY="130.0" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #cccaca;" />
+      <TextField fx:id="ncc" layoutX="358.0" layoutY="130.0" prefHeight="25.0" prefWidth="153.0" style="-fx-background-color: #cccaca;" />
+      <TextField fx:id="time" layoutX="573.0" layoutY="130.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #cccaca;" />
+      <TableView fx:id="phieuban" layoutX="1.0" layoutY="169.0" prefHeight="229.0" prefWidth="553.0">
+         <columns>
+            <TableColumn fx:id="id" prefWidth="37.999969482421875" text="STT" />
+            <TableColumn fx:id="masp" prefWidth="65.99996948242188" text="Mã SP" />
+            <TableColumn fx:id="tensp" prefWidth="113.99999237060547" text="Tên SP" />
+            <TableColumn fx:id="ram" prefWidth="55.99995422363281" text="Ram" />
+            <TableColumn fx:id="rom" prefWidth="54.0" text="Rom" />
+            <TableColumn fx:id="color" prefWidth="70.66668701171875" text="Color" />
+            <TableColumn fx:id="tien" prefWidth="92.6666259765625" text="Đơn giá" />
+            <TableColumn fx:id="sl" prefWidth="55.999969482421875" text="Số lượng" />
+         </columns>
+      </TableView>
+      <TableView fx:id="ctsp" layoutX="560.0" layoutY="170.0" prefHeight="229.0" prefWidth="163.0">
+         <columns>
+            <TableColumn fx:id="id1" prefWidth="34.666748046875" text="STT" />
+            <TableColumn fx:id="imei" prefWidth="120.0" text="Mã Imei" />
+         </columns>
+      </TableView>
+      <HBox alignment="CENTER" layoutX="201.0" layoutY="412.0" onMouseClicked="#print" prefHeight="30.0" prefWidth="127.0" spacing="20.0" style="-fx-background-color: #87878d; -fx-background-radius: 30;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../file.jpg" />
+               </image>
+            </ImageView>
+            <Label text="Xuất file" textFill="#0adbff">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="435.0" layoutY="412.0" onMouseClicked="#cancel" prefHeight="30.0" prefWidth="127.0" spacing="20.0" style="-fx-background-color: #ef6b6b; -fx-background-radius: 30;">
+         <children>
+            <Label text="Hủy bỏ" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -13,24 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Phieuxuat_controller">
    <children>
-      <HBox alignment="CENTER" layoutX="45.0" layoutY="47.0" onMouseClicked="#add" prefHeight="20.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #9af4a6; -fx-background-radius: 30;">
-         <children>
-            <ImageView fitHeight="13.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../add.jpg" />
-               </image>
-            </ImageView>
-            <Label text="Tạo mới" textFill="#2b8438">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="184.0" layoutY="47.0" onMouseClicked="#select" prefHeight="20.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #9299ed; -fx-background-radius: 30;">
+      <HBox alignment="CENTER" layoutX="65.0" layoutY="27.0" onMouseClicked="#select" prefHeight="27.0" prefWidth="111.0" spacing="20.0" style="-fx-background-color: #9299ed; -fx-background-radius: 30;">
          <children>
             <ImageView fitHeight="13.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -47,14 +30,29 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </HBox>
-      <HBox alignment="CENTER" layoutX="325.0" layoutY="47.0" onMouseClicked="#print" prefHeight="20.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #87878d; -fx-background-radius: 30;">
+      <ScrollPane layoutY="77.0" prefHeight="470.0" prefWidth="996.0">
+         <content>
+            <TableView fx:id="phieuxuat" prefHeight="467.0" prefWidth="991.0">
+               <columns>
+                  <TableColumn fx:id="id" prefWidth="51.33331310749054" text="STT" />
+                  <TableColumn fx:id="maphieuxuat" prefWidth="105.33334350585938" text="Mã phiếu xuất" />
+                  <TableColumn fx:id="khachhang" prefWidth="226.66665649414062" text="Khách hàng" />
+                  <TableColumn fx:id="nhanviennhap" prefWidth="212.66668701171875" text="Nhân viên nhập" />
+                  <TableColumn fx:id="time" minWidth="6.666748046875" prefWidth="164.6666259765625" text="Thời gian" />
+                  <TableColumn fx:id="total" prefWidth="131.33331298828125" text="Tổng tiền" />
+                  <TableColumn fx:id="edit" prefWidth="101.99993896484375" text="Chức năng" />
+               </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <HBox alignment="CENTER" layoutX="875.0" layoutY="27.0" onMouseClicked="#load" prefHeight="20.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #f9fb92; -fx-background-radius: 30;">
          <children>
-            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="24.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-y: 0.7; -fx-scale-x: 0.9;">
                <image>
-                  <Image url="@../../file.jpg" />
+                  <Image url="@../../load.jpg" />
                </image>
             </ImageView>
-            <Label text="Xuất file" textFill="#2e2e2f">
+            <Label text="Refresh" textFill="#fc9305">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -64,20 +62,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </HBox>
-      <ScrollPane layoutY="77.0" prefHeight="470.0" prefWidth="782.0">
-         <content>
-            <TableView prefHeight="467.0" prefWidth="778.0">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="STT" />
-                  <TableColumn fx:id="maphieuxuat" prefWidth="102.0" text="Mã phiếu xuất" />
-                  <TableColumn fx:id="khachhang" prefWidth="104.66665649414062" text="Khách hàng" />
-                  <TableColumn fx:id="nhanviennhap" prefWidth="158.6666259765625" text="Nhân viên nhập" />
-                  <TableColumn fx:id="time" minWidth="6.666748046875" prefWidth="126.6666259765625" text="Thời gian" />
-                  <TableColumn fx:id="total" prefWidth="110.0" text="Tổng tiền" />
-                  <TableColumn prefWidth="96.6666259765625" text="Chức năng" />
-               </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
    </children>
 </AnchorPane>
