@@ -17,6 +17,7 @@ import Model.Khuvuckho;
 import Model.Sanpham;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -24,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class Add_kho_controller implements Initializable{
 	
@@ -45,6 +47,16 @@ public class Add_kho_controller implements Initializable{
 
     @FXML
     void cancel(MouseEvent event) {
+    	 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+         alert.setTitle("Xác nhận");
+         alert.setHeaderText("Bạn có muốn thoát không?");
+
+         alert.showAndWait().ifPresent(response -> {
+             if (response == javafx.scene.control.ButtonType.OK) {
+                 Stage stage = (Stage) ((Node) ( event.getSource())).getScene().getWindow();
+                 stage.close();
+             }
+         });
 
     }
 

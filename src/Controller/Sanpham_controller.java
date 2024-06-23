@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -32,6 +33,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -74,34 +76,48 @@ public class Sanpham_controller implements Initializable{
 	    @FXML
 	    private TableColumn<Sanpham, String> edit;
 	    
-	    private ObservableList<Sanpham> list;
+	    private Main_Controller mainController;
+	    
+	    @FXML
+	    private AnchorPane root;
+
+	    public void setMainController(Main_Controller mainController) {
+	        this.mainController = mainController;
+	    }
+	    
+	    private ObservableList<Sanpham> list;    
 	    private Sanpham_DAO sp_DAO;
 	    private Sanpham sp=null;
-//	    public void search(String query) {
-//	        String searchQuery = query.trim();
-//	        if (!searchQuery.isEmpty()) {
-//	            ObservableList<Sanpham> searchResult = FXCollections.observableArrayList();
-//	            for (Sanpham sanpham : list) {
-//	                if (sanpham.getTensp().toLowerCase().contains(searchQuery.toLowerCase())) {
-//	                    searchResult.add(sanpham);
-//	                }
-//	            }
-//	            this.sanpham.().setItems(searchResult);
-//	        } else {
-//	            this.tableController.getSanpham().setItems(list);
-//	        }
-//	    }
-
+	    public Sanpham_controller() {
+	        list = FXCollections.observableArrayList();
+	        sp_DAO = new Sanpham_DAO(); 
+	        sanpham = new TableView<>();
+	    }
+	    public void search(String query) {
+	        String searchQuery = query.trim();
+	        if (!searchQuery.isEmpty()) {
+	            ObservableList<Sanpham> searchResult = FXCollections.observableArrayList();
+	            for (Sanpham sp : list) {
+	                if (sp.getTensp().toLowerCase().contains(searchQuery.toLowerCase())) {
+	                    searchResult.add(sp);
+	                }
+	            }
+	            load();
+	            sanpham.setItems(searchResult);
+	        } else {
+	        	load();
+	            sanpham.setItems(list);
+	        }
+	    }
 	    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		loadData();
-		sanpham.setOnMouseClicked(event -> {
-	        if (event.getClickCount() == 1) { 
-	            sanpham.getSelectionModel().clearSelection();
+		
+		 if(mainController != null) {
+	            mainController.setTableController(this);
 	        }
-	    });
 	}
 	    @FXML
 	    void add(MouseEvent event) {
@@ -120,6 +136,7 @@ public class Sanpham_controller implements Initializable{
             stage.setScene(new Scene(parent));
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
+            
 	    }
 
 	    @FXML
@@ -130,12 +147,41 @@ public class Sanpham_controller implements Initializable{
 	    	
              sp_DAO=new Sanpham_DAO();
              list=sp_DAO.selectAll();
+             for (Sanpham sanPham : list) {
+                 int check = sp_DAO.updatesl(sanPham);
+             }
              sanpham.setItems(list);
 	    }
 
 	    @FXML
 	    void select(MouseEvent event) {
-
+	    	
+	    	Sanpham sp = sanpham.getSelectionModel().getSelectedItem();
+	    	if(sp==null) {
+	    		Alert alert = new Alert(Alert.AlertType.ERROR);
+	             alert.setHeaderText(null);
+	             alert.setContentText("Bạn chưa kích chọn sản phẩm muốn xem");
+	             alert.showAndWait();
+	    	}
+	    	else {
+	    		
+	    		ghiFileMasp(sp.getMasp());
+		    	FXMLLoader loader = new FXMLLoader ();
+	            loader.setLocation(getClass().getResource("/View/Select_sp_view.fxml"));
+	            try {
+	                loader.load();
+	            } catch (IOException ex) {
+	           	 ex.printStackTrace();
+	            }
+	            
+	            Parent parent = loader.getRoot();
+	            Stage stage = new Stage();
+	            stage.setScene(new Scene(parent));
+	            stage.initStyle(StageStyle.UTILITY);
+	            stage.show();
+	    	}
+       	    
+             
 	    }
 
 	private void loadData() {

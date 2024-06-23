@@ -228,7 +228,8 @@ public class Add_sp_controller implements Initializable{
                  ghiFileMasp(ma.masp(new Sanpham(ten.getText())));	
         	}
 
-        }else{
+        }
+        else{
            sp.update(new Sanpham(masp,ten.getText(),getPath(img),xx.selectByNam(xuatxu.getValue().toString()),Integer.parseInt(pin.getText()),Double.parseDouble(size.getText()),h.selectByNam(hdh.getValue().toString()),Integer.parseInt(phienban.getText()),came_sau.getText(),came_truoc.getText(),Integer.parseInt(baohanh.getText()),t.selectByNam(thuonghieu.getValue().toString()),k.selectByNam(kho.getValue().toString())));
         }
  

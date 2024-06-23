@@ -13,6 +13,7 @@ import AtttributeSanPham.Xuatxu;
 import DAO.Sanpham_DAO;
 import DAO.Thuonghieu_DAO;
 import Model.Sanpham;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -57,10 +59,38 @@ public class Thuonghieu_controller implements Initializable {
     @FXML
     private TableView<Thuonghieu> table;
     
+    private Main_Controller mainController;
+
+    public void setMainController(Main_Controller mainController) {
+        this.mainController = mainController;
+    }
+    
     private ObservableList<Thuonghieu> list;
     
     private Thuonghieu_DAO th_DAO;
     private Thuonghieu th=null;
+    
+    public Thuonghieu_controller() {
+        list = FXCollections.observableArrayList();
+        th_DAO = new Thuonghieu_DAO(); 
+        table = new TableView<>();
+    }
+    public void search(String query) {
+        String searchQuery = query.trim();
+        if (!searchQuery.isEmpty()) {
+            ObservableList<Thuonghieu> searchResult = FXCollections.observableArrayList();
+            for (Thuonghieu th : list) {
+                if (th.getTenthuonghieu().toLowerCase().contains(searchQuery.toLowerCase())) {
+                    searchResult.add(th);
+                }
+            }
+            load();
+            table.setItems(searchResult);
+        } else {
+        	load();
+            table.setItems(list);
+        }
+    }
 
     @FXML
     void add(MouseEvent event) {
@@ -85,6 +115,10 @@ public class Thuonghieu_controller implements Initializable {
 	            table.getSelectionModel().clearSelection();
 	        }
 	    });
+		
+		 if(mainController != null) {
+	            mainController.setTHController(this);
+	        }
 	}
 	@FXML
 	void load() {

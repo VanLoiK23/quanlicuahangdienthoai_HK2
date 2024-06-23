@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Model.Sanpham;
+import PDF.WriteFile_pdf;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,23 +51,88 @@ public class Main_Controller implements Initializable{
 	@FXML
     private ImageView img_exit;
 	
-	 private Sanpham_controller tableController;
+	private Sanpham_controller sanphamController;
 
-	public void setTableController(Sanpham_controller tableController) {
-	        this.tableController = tableController;
+	public void setTableController(Sanpham_controller sanphamController) {
+	        this.sanphamController = sanphamController;
+	}
+	private Thuonghieu_controller thController;
+
+	public void setTHController(Thuonghieu_controller thController) {
+	        this.thController = thController;
+	}
+	private Xuatxu_controller xxController;
+
+	public void setXXController(Xuatxu_controller xxController) {
+	        this.xxController = xxController;
+	}
+	private Hdh_controller hdhController;
+
+	public void setHDHController(Hdh_controller hdhController) {
+	        this.hdhController = hdhController;
+	}
+	private ram_controller raController;
+
+	public void setRAController(ram_controller raController) {
+	        this.raController = raController;
+	}
+	private rom_controller roController;
+
+	public void setROController(rom_controller roController) {
+	        this.roController = roController;
+	}
+	private color_controller clController;
+
+	public void setCLController(color_controller clController) {
+	        this.clController = clController;
+	}
+	private Kho_controller khoController;
+
+	public void setKhoController(Kho_controller khoController) {
+	        this.khoController = khoController;
+	}
+	private Nhacungcap_controller nccController;
+
+	public void setNccController( Nhacungcap_controller nccController) {
+	        this.nccController = nccController;
 	}
 	
+	private Nhanvien_controller nvController;
+	public void setNvController(Nhanvien_controller nvController) {
+		this.nvController=nvController;
+	}
+	
+	private Phieunhap_controller pnController;
+	public void setPNController(Phieunhap_controller pnController) {
+		this.pnController=pnController;
+	}
+	
+	private Phieuxuat_controller pxController;
+	public void setPXController(Phieuxuat_controller pxController) {
+		this.pxController=pxController;
+	}
+	private Add_phieunhapcontroller addpnController;
+	public void setAddPNController(Add_phieunhapcontroller addpnController) {
+		this.addpnController=addpnController;
+	}
+	private Khachhang_controller kh_controller;
+	public void setKHController(Khachhang_controller kh_controller) {
+		this.kh_controller=kh_controller;
+	}
 	@FXML
-    public void selected(MouseEvent event) {
-		Isselected(event);
-	    String path="/View/Sanpham_view.fxml";
-	    loader(path);
-//	    search.textProperty().addListener((observable, oldValue, newValue) -> {
-//	        
-//	    	tableController.search(newValue);
-//	    });
+	public void selected(MouseEvent event) {
+	    Isselected(event);
+	    String path = "/View/Sanpham_view.fxml";
+	    Sanpham_controller sanphamController = loader(path).getController();
+        sanphamController.setMainController(this); 
 
-    }
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (sanphamController != null ) {
+                sanphamController.search(newValue);
+            }
+        });
+	}
+
 	
 	@FXML
 	public void homepage(MouseEvent e) {
@@ -132,27 +199,69 @@ public class Main_Controller implements Initializable{
         
         brand.setOnAction(e -> {
             String path="/View/Thuonghieu_view.fxml";
-            loader(path);
+            Thuonghieu_controller thController = loader(path).getController();
+            thController.setMainController(this); 
+
+	        search.textProperty().addListener((observable, oldValue, newValue) -> {
+	            if (thController != null ) {
+	            	thController.search(newValue);
+	            }
+	        });
         });
         xuatxu.setOnAction(e -> {
             String path="/View/Xuatxu_view.fxml";
-            loader(path);
+            Xuatxu_controller xxController = loader(path).getController();
+            xxController.setMainController(this); 
+
+	        search.textProperty().addListener((observable, oldValue, newValue) -> {
+	            if (xxController != null ) {
+	            	xxController.search(newValue);
+	            }
+	        });
         });
         hedieuhanh.setOnAction(e -> {
             String path="/View/hdh_view.fxml";
-            loader(path);
+            Hdh_controller hdhController = loader(path).getController();
+            hdhController.setMainController(this); 
+
+	        search.textProperty().addListener((observable, oldValue, newValue) -> {
+	            if (hdhController != null ) {
+	            	hdhController.search(newValue);
+	            }
+	        });
         });
         ram.setOnAction(e -> {
             String path="/View/ram_view.fxml";
-            loader(path);
+            ram_controller raController = loader(path).getController();
+            raController.setMainController(this); 
+
+	        search.textProperty().addListener((observable, oldValue, newValue) -> {
+	            if (raController != null ) {
+	            	raController.search(newValue);
+	            }
+	        });
         });
         rom.setOnAction(e -> {
             String path="/View/rom_view.fxml";
-            loader(path);
+            rom_controller roController = loader(path).getController();
+            roController.setMainController(this); 
+
+	        search.textProperty().addListener((observable, oldValue, newValue) -> {
+	            if (roController != null ) {
+	            	roController.search(newValue);
+	            }
+	        });
         });
         color.setOnAction(e -> {
             String path="/View/color_view.fxml";
-            loader(path);
+            color_controller clController = loader(path).getController();
+            clController.setMainController(this); 
+
+	        search.textProperty().addListener((observable, oldValue, newValue) -> {
+	            if (clController != null ) {
+	            	clController.search(newValue);
+	            }
+	        });
         });
         
     }
@@ -160,47 +269,102 @@ public class Main_Controller implements Initializable{
     public void kho(MouseEvent event) {
 		Isselected(event);
 		String path="/View/Kho_view.fxml";
-		loader(path);
+		Kho_controller khoController = loader(path).getController();
+        khoController.setMainController(this); 
+
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (khoController != null ) {
+            	khoController.search(newValue);
+            }
+        });
     }
 	@FXML
     public void nhap(MouseEvent event) {
-		Isselected(event);
-		String path="/View/Phieunhap_view.fxml";
-		loader(path);
+
+        Thread thread = new Thread(() -> {
+      	     
+ 	        Platform.runLater(() -> {
+ 	        	
+ 	        	Isselected(event);
+ 	   		String path="/View/Phieunhap_view.fxml";
+ 	   		Phieunhap_controller pn_Controller = loader(path).getController();
+ 	   		pn_Controller.setMainController(this); 
+ 	   		
+ 	   		search.textProperty().addListener((observable, oldValue, newValue) -> {
+ 	               if (pn_Controller != null ) {
+ 	               	pn_Controller.search(newValue);
+ 	               }
+ 	           });
+
+ 	        }
+    	);});
+			thread.start();
     }
 	@FXML
     public void xuat(MouseEvent event) {
-		Isselected(event);
-		String path="/View/Phieuxuat_view.fxml";
-		loader(path);
+		 Thread thread = new Thread(() -> {
+      	     
+	 	        Platform.runLater(() -> {
+	 	        	
+	 	        	Isselected(event);
+	 	   		String path="/View/Phieuxuat_view.fxml";
+	 	   		Phieuxuat_controller px_Controller = loader(path).getController();
+	 	   		px_Controller.setMainController(this); 
+
+	 	           search.textProperty().addListener((observable, oldValue, newValue) -> {
+	 	               if (px_Controller != null ) {
+	 	               	px_Controller.search(newValue);
+	 	               }
+	 	           });
+
+	 	        }
+	    	);});
+				thread.start();
     }
 	@FXML
     public void khachhang(MouseEvent event) {
 		Isselected(event);
 		String path="/View/Khachhang_view.fxml";
-		loader(path);
+		Khachhang_controller kh_controller = loader(path).getController();
+		kh_controller.setMainController(this); 
+
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (kh_controller != null ) {
+            	kh_controller.search(newValue);
+            }
+        });
     }
 	@FXML
     public void ncc(MouseEvent event) {
 		Isselected(event);
 		String path="/View/Nhacungcap_view.fxml";
-		loader(path);
+		Nhacungcap_controller nccController = loader(path).getController();
+		nccController.setMainController(this); 
+
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (nccController != null ) {
+            	nccController.search(newValue);
+            }
+        });
     }
 	@FXML
     public void nv(MouseEvent event) {
 		Isselected(event);
 		String path="/View/Nhanvien_view.fxml";
-		loader(path);
-    }
-	@FXML
-    public void taikhoan(MouseEvent event) {
-		Isselected(event);
+		Nhanvien_controller nvController = loader(path).getController();
+		nvController.setMainController(this); 
 
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (nvController != null ) {
+            	nvController.search(newValue);
+            }
+        });
     }
 	@FXML
     public void tk(MouseEvent event) {
 		Isselected(event);
-
+		String path="/View/Thongke_tongquan.fxml";
+        loader(path);
     }
 	@FXML
 	public void exit(MouseEvent event) {
@@ -277,7 +441,13 @@ public class Main_Controller implements Initializable{
 	        }
 	    }
 	}
-	private void loader(String path) {
+	public FXMLLoader loader(String path) {
+		if(path.equals("/View/Add_phieunhap.fxml")) {
+			Search.setManaged(false);
+		}
+		else {
+			Search.setManaged(true);
+		}
 		try {
     	    FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
     	    Node content=(Node) borderPane.getCenter();
@@ -287,9 +457,11 @@ public class Main_Controller implements Initializable{
                 carousel.getChildren().clear();
 			}
             borderPane.setCenter(newPage);
+            return loader;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 }

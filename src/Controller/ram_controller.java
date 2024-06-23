@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import AtttributeSanPham.Hedieuhanh;
 import AtttributeSanPham.Ram;
 
 import DAO.Hedieuhanh_DAO;
@@ -21,6 +22,7 @@ import DAO.Thuonghieu_DAO;
 import DAO.ram_DAO;
 import DAO.rom_DAO;
 import Model.Sanpham;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,10 +65,38 @@ public class ram_controller implements Initializable {
 	    @FXML
 	    private TableView<Ram> table;
 	    
+	    private Main_Controller mainController;
+
+	    public void setMainController(Main_Controller mainController) {
+	        this.mainController = mainController;
+	    }
+	    
 	    private ObservableList<Ram> list;
 	    
 	    private ram_DAO r_DAO;
 	    private Ram r=null;
+	    
+	    public ram_controller() {
+	        list = FXCollections.observableArrayList();
+	        r_DAO = new ram_DAO(); 
+	        table = new TableView<>();
+	    }
+	    public void search(String query) {
+	        String searchQuery = query.trim();
+	        if (!searchQuery.isEmpty()) {
+	            ObservableList<Ram> searchResult = FXCollections.observableArrayList();
+	            for (Ram ra : list) {
+	                if (Integer.toString(ra.getDungluongRam()).toLowerCase().contains(searchQuery.toLowerCase())) {
+	                    searchResult.add(ra);
+	                }
+	            }
+	            load();
+	            table.setItems(searchResult);
+	        } else {
+	        	load();
+	            table.setItems(list);
+	        }
+	    }
 
 	    @FXML
 	    void add(MouseEvent event) {
@@ -93,6 +123,10 @@ public class ram_controller implements Initializable {
 		            table.getSelectionModel().clearSelection();
 		        }
 		    });
+			
+			if(mainController != null) {
+	            mainController.setRAController(this);
+	        }
 		}
 		@FXML
 		void load() {

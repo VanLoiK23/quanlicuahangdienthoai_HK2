@@ -8,8 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.Kho_DAO;
 import DAO.Nhacungcap_DAO;
+import Model.Khuvuckho;
 import Model.Nhacungcap;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,15 +53,39 @@ public class Nhacungcap_controller implements Initializable{
     private TableColumn<Nhacungcap, String> edit;
     @FXML
     private TableView<Nhacungcap> table;
+    
+    private Main_Controller mainController;
 
-    @FXML
-    void print(MouseEvent event) {
-
+    public void setMainController(Main_Controller mainController) {
+        this.mainController = mainController;
     }
 
     private ObservableList<Nhacungcap> list;
     private Nhacungcap_DAO ncc_DAO;
     private Nhacungcap ncc=null;
+    
+    public Nhacungcap_controller() {
+        list = FXCollections.observableArrayList();
+        ncc_DAO = new Nhacungcap_DAO(); 
+        table = new TableView<>();
+    }
+    public void search(String query) {
+        String searchQuery = query.trim();
+        if (!searchQuery.isEmpty()) {
+            ObservableList<Nhacungcap> searchResult = FXCollections.observableArrayList();
+            for (Nhacungcap ro : list) {
+                if ((ro.getTenncc()).toLowerCase().contains(searchQuery.toLowerCase())) {
+                    searchResult.add(ro);
+                }
+            }
+            load();
+            table.setItems(searchResult);
+        } else {
+        	load();
+            table.setItems(list);
+        }
+    }
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 	
@@ -68,6 +95,10 @@ public class Nhacungcap_controller implements Initializable{
             table.getSelectionModel().clearSelection();
         }
     });
+	
+	if(mainController != null) {
+        mainController.setNccController(this);
+    }
     }
     @FXML
     void add(MouseEvent event) {
@@ -93,12 +124,6 @@ public class Nhacungcap_controller implements Initializable{
          list=ncc_DAO.selectAll();
          table.setItems(list);
     }
-
-    @FXML
-    void select(MouseEvent event) {
-
-    }
-
 private void loadData() {
 	
 	load();

@@ -15,7 +15,9 @@ import AtttributeSanPham.Xuatxu;
 import DAO.Hedieuhanh_DAO;
 import DAO.Sanpham_DAO;
 import DAO.Thuonghieu_DAO;
+import DAO.Xuatxu_DAO;
 import Model.Sanpham;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -58,10 +60,38 @@ public class Hdh_controller implements Initializable {
 	    @FXML
 	    private TableView<Hedieuhanh> table;
 	    
+	    private Main_Controller mainController;
+
+	    public void setMainController(Main_Controller mainController) {
+	        this.mainController = mainController;
+	    }
+	    
 	    private ObservableList<Hedieuhanh> list;
 	    
 	    private Hedieuhanh_DAO th_DAO;
 	    private Hedieuhanh th=null;
+	    
+	    public Hdh_controller() {
+	        list = FXCollections.observableArrayList();
+	        th_DAO = new Hedieuhanh_DAO(); 
+	        table = new TableView<>();
+	    }
+	    public void search(String query) {
+	        String searchQuery = query.trim();
+	        if (!searchQuery.isEmpty()) {
+	            ObservableList<Hedieuhanh> searchResult = FXCollections.observableArrayList();
+	            for (Hedieuhanh hd : list) {
+	                if (hd.getTenhdh().toLowerCase().contains(searchQuery.toLowerCase())) {
+	                    searchResult.add(hd);
+	                }
+	            }
+	            load();
+	            table.setItems(searchResult);
+	        } else {
+	        	load();
+	            table.setItems(list);
+	        }
+	    }
 
 	    @FXML
 	    void add(MouseEvent event) {
@@ -86,6 +116,10 @@ public class Hdh_controller implements Initializable {
 		            table.getSelectionModel().clearSelection();
 		        }
 		    });
+			
+			if(mainController != null) {
+	            mainController.setHDHController(this);
+	        }
 		}
 		@FXML
 		void load() {

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import DAO.Account_DAO;
 import Model.Taikhoan;
+import Security.Test_scurity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,8 +42,9 @@ public class Login_controller {
 	 void submit(MouseEvent event) throws IOException {
          Account_DAO signin=new Account_DAO();
          if(!username.getText().isEmpty()&&!password.getText().isEmpty()) {
-        	 boolean check=signin.khachhang(new Taikhoan(username.getText(),password.getText()));
-        	 boolean ad=signin.admin(new Taikhoan(username.getText(),password.getText()));
+     		 Test_scurity encryt=new Test_scurity();
+        	 boolean check=signin.khachhang(new Taikhoan(username.getText(),encryt.Password(password.getText())));
+        	 boolean ad=signin.admin(new Taikhoan(username.getText(),encryt.Password(password.getText())));
         	 if(ad) {
      		    Alert alert = new Alert(AlertType.CONFIRMATION);
 		            alert.setTitle("Success!!!!");

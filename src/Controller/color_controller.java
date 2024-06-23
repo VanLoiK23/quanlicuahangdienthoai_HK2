@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 import AtttributeSanPham.Color;
 import AtttributeSanPham.Ram;
-
+import AtttributeSanPham.Rom;
 import DAO.Hedieuhanh_DAO;
 import DAO.Sanpham_DAO;
 import DAO.Thuonghieu_DAO;
@@ -23,6 +23,7 @@ import DAO.color_DAO;
 import DAO.ram_DAO;
 import DAO.rom_DAO;
 import Model.Sanpham;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,10 +66,39 @@ public class color_controller implements Initializable {
 	    @FXML
 	    private TableView<Color> table;
 	    
+	    private Main_Controller mainController;
+
+	    public void setMainController(Main_Controller mainController) {
+	        this.mainController = mainController;
+	    }
+	    
+	    
 	    private ObservableList<Color> list;
 	    
 	    private color_DAO r_DAO;
 	    private Color r=null;
+	    
+	    public color_controller() {
+	        list = FXCollections.observableArrayList();
+	        r_DAO = new color_DAO(); 
+	        table = new TableView<>();
+	    }
+	    public void search(String query) {
+	        String searchQuery = query.trim();
+	        if (!searchQuery.isEmpty()) {
+	            ObservableList<Color> searchResult = FXCollections.observableArrayList();
+	            for (Color ro : list) {
+	                if ((ro.getColor()).toLowerCase().contains(searchQuery.toLowerCase())) {
+	                    searchResult.add(ro);
+	                }
+	            }
+	            load();
+	            table.setItems(searchResult);
+	        } else {
+	        	load();
+	            table.setItems(list);
+	        }
+	    }
 
 	    @FXML
 	    void add(MouseEvent event) {
@@ -93,6 +123,10 @@ public class color_controller implements Initializable {
 		            table.getSelectionModel().clearSelection();
 		        }
 		    });
+			
+			if(mainController != null) {
+	            mainController.setCLController(this);
+	        }
 		}
 		@FXML
 		void load() {

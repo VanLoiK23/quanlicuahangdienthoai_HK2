@@ -17,6 +17,7 @@ import DAO.color_DAO;
 import DAO.ram_DAO;
 import DAO.rom_DAO;
 import Model.Phieubansanpham;
+import Model.Sanpham;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -198,6 +199,8 @@ public class Add_cauhinh_sp_controller implements Initializable{
                  if (new_ram != null&&new_rom != null&&new_color != null && text_priceN.getText()!=null&&text_priceX.getText()!=null) {
                 	 sp_DAO.update(new Phieubansanpham(getI(),docso("masp.txt"),ra.selectByNam(Integer.parseInt(new_ram)),ro.selectByNam(Integer.parseInt(new_rom))
                     		 ,col.selectByNam(new_color),N,X));
+                	 Sanpham_DAO ct=new Sanpham_DAO();
+                	 ct.updatesl( new Sanpham(docso("masp.txt")));
             	     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
      	             alert.setHeaderText(null);
      	             alert.setContentText("Successfull");

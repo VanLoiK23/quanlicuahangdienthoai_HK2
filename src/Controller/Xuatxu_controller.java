@@ -14,6 +14,7 @@ import DAO.Sanpham_DAO;
 import DAO.Thuonghieu_DAO;
 import DAO.Xuatxu_DAO;
 import Model.Sanpham;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,10 +58,38 @@ public class Xuatxu_controller implements Initializable {
     @FXML
     private TableView<Xuatxu> table;
     
+    private Main_Controller mainController;
+
+    public void setMainController(Main_Controller mainController) {
+        this.mainController = mainController;
+    }
+    
     private ObservableList<Xuatxu> list;
     
     private Xuatxu_DAO xx_DAO;
     private Xuatxu xx=null;
+    
+    public Xuatxu_controller() {
+        list = FXCollections.observableArrayList();
+        xx_DAO = new Xuatxu_DAO(); 
+        table = new TableView<>();
+    }
+    public void search(String query) {
+        String searchQuery = query.trim();
+        if (!searchQuery.isEmpty()) {
+            ObservableList<Xuatxu> searchResult = FXCollections.observableArrayList();
+            for (Xuatxu xx : list) {
+                if (xx.getNoi().toLowerCase().contains(searchQuery.toLowerCase())) {
+                    searchResult.add(xx);
+                }
+            }
+            load();
+            table.setItems(searchResult);
+        } else {
+        	load();
+            table.setItems(list);
+        }
+    }
 
     @FXML
     void add(MouseEvent event) {
@@ -85,6 +114,10 @@ public class Xuatxu_controller implements Initializable {
 	            table.getSelectionModel().clearSelection();
 	        }
 	    });
+		
+		if(mainController != null) {
+            mainController.setXXController(this);
+        }
 	}
 	@FXML
 	void load() {

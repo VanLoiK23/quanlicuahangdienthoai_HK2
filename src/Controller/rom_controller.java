@@ -6,9 +6,12 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import AtttributeSanPham.Ram;
 import AtttributeSanPham.Rom;
+import DAO.ram_DAO;
 import DAO.rom_DAO;
 import Model.Sanpham;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,10 +54,38 @@ public class rom_controller implements Initializable {
 	    @FXML
 	    private TableView<Rom> table;
 	    
+	    private Main_Controller mainController;
+
+	    public void setMainController(Main_Controller mainController) {
+	        this.mainController = mainController;
+	    }
+	    
 	    private ObservableList<Rom> list;
 	    
 	    private rom_DAO r_DAO;
 	    private Rom r=null;
+	    
+	    public rom_controller() {
+	        list = FXCollections.observableArrayList();
+	        r_DAO = new rom_DAO(); 
+	        table = new TableView<>();
+	    }
+	    public void search(String query) {
+	        String searchQuery = query.trim();
+	        if (!searchQuery.isEmpty()) {
+	            ObservableList<Rom> searchResult = FXCollections.observableArrayList();
+	            for (Rom ro : list) {
+	                if (Integer.toString(ro.getDungluongRom()).toLowerCase().contains(searchQuery.toLowerCase())) {
+	                    searchResult.add(ro);
+	                }
+	            }
+	            load();
+	            table.setItems(searchResult);
+	        } else {
+	        	load();
+	            table.setItems(list);
+	        }
+	    }
 
 	    @FXML
 	    void add(MouseEvent event) {
@@ -87,6 +118,10 @@ public class rom_controller implements Initializable {
 		            table.getSelectionModel().clearSelection();
 		        }
 		    });
+			
+			if(mainController != null) {
+	            mainController.setROController(this);
+	        }
 		}
 		@FXML
 		void load() {

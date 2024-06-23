@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import DAO.Account_DAO;
 import Model.Taikhoan;
+import Security.Test_scurity;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -89,7 +90,8 @@ public class Register_controller {
 	        	}
 	        	else {
 	        		Account_DAO create=new Account_DAO();
-	        		create.add(new Taikhoan(username.getText(),password.getText(),address.getText(),phone.getText(),1));
+	        		Test_scurity encryt=new Test_scurity();
+	        		create.add(new Taikhoan(username.getText(),encryt.Password(password.getText()),address.getText(),phone.getText(),1));
 	        		Alert alert = new Alert(AlertType.CONFIRMATION);
 		            alert.setTitle("Success!!!!");
 		            alert.setHeaderText(null);
