@@ -1,9 +1,21 @@
 package Model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "chitietphieunhap")
 public class ChitietPhieuNhap {
+	   @Id
+	   @Column(name = "maphieunhap")
 	    private int maphieunhap;
+	   @Column(name = "maphienbansp")
 	    private int maphienbansp;
+	   @Column(name = "soluong")
 	    private int soluong;
+	   @Column(name = "dongia")
 	    private int dongia;
 
 	    public ChitietPhieuNhap() {

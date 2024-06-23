@@ -38,10 +38,33 @@ public class Phieubansanpham {
 	 private int ktrom;
      @Transient
 	 private String color;
+     @Transient
+	 private String tensp;
+     @Transient
+	 private Long imei;
 
     public Phieubansanpham() {
     }
 
+    
+//    int maphienbansp = rs.getInt("maphienbansp");
+//    int masp = rs.getInt("masp");
+//    int ram = rs.getInt("ram");
+//    int mausac = rs.getInt("mausac");
+//    int rom = rs.getInt("rom");
+//    int gianhap = rs.getInt("gianhap");
+//    int giaxuat = rs.getInt("giaxuat");
+//    int soluongton = rs.getInt("soluongton");
+    public Phieubansanpham(int maphienbansp,int masp, int ram, int mausac, int rom, int gianhap, int giaxuat,int soluongton) {
+        this.maphienbansp = maphienbansp;
+        this.masp = masp;
+        this.ram = ram;
+        this.rom = rom;
+        this.mausac = mausac;
+        this.gianhap = gianhap;
+        this.giaxuat = giaxuat;
+        this.soluongton=soluongton;
+    }
     public Phieubansanpham(int maphienbansp,int masp, int ram, int rom, int mausac, int gianhap, int giaxuat) {
         this.maphienbansp = maphienbansp;
         this.masp = masp;
@@ -51,7 +74,15 @@ public class Phieubansanpham {
         this.gianhap = gianhap;
         this.giaxuat = giaxuat;
     }
-    
+    public Phieubansanpham(int ram, int rom, String color) {
+        this.ram = ram;
+        this.rom = rom;
+        this.color = color;
+    }
+    public Phieubansanpham(int maphienbansp,int soluongton) {
+        this.maphienbansp = maphienbansp;
+        this.soluongton = soluongton;
+    }
     public Phieubansanpham(int maphienbansp, int ram, int rom, int mausac, int gianhap, int giaxuat) {
         this.maphienbansp = maphienbansp;
         this.ram = ram;
@@ -67,6 +98,37 @@ public class Phieubansanpham {
         this.mausac = mausac;
         this.gianhap = gianhap;
         this.giaxuat = (int)giaxuat;
+    }
+    public Phieubansanpham(int maphienbansp,int masp,String tensp, int ram, int rom, String  color, int gianhap, int soluongton) {
+        this.maphienbansp=maphienbansp;
+    	this.masp=masp;
+        this.tensp=tensp;
+    	this.ram = ram;
+        this.rom = rom;
+        this.color = color;
+        this.gianhap = gianhap;
+        this.soluongton=soluongton;
+    }
+    public Phieubansanpham(int maphienbansp,int masp,String tensp, int ram, int rom, String  color, float giaxuat, int soluongton) {
+        this.maphienbansp=maphienbansp;
+    	this.masp=masp;
+        this.tensp=tensp;
+    	this.ram = ram;
+        this.rom = rom;
+        this.color = color;
+        this.giaxuat = (int)giaxuat;
+        this.soluongton=soluongton;
+    }
+    public Phieubansanpham(int maphienbansp,Long imei,int masp,String tensp, int ram, int rom, String  color, int gianhap, int soluongton) {
+        this.maphienbansp=maphienbansp;
+        this.imei=imei;
+    	this.masp=masp;
+        this.tensp=tensp;
+    	this.ram = ram;
+        this.rom = rom;
+        this.color = color;
+        this.gianhap = gianhap;
+        this.soluongton=soluongton;
     }
     public Phieubansanpham(int maphienbansp, int ktram, int ktrom, String color, int gianhap, int giaxuat) {
         this.maphienbansp = maphienbansp;
@@ -171,10 +233,28 @@ public class Phieubansanpham {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	
+
+	public String getTensp() {
+		return tensp;
+	}
+
+	public void setTensp(String tensp) {
+		this.tensp = tensp;
+	}
+
+	
+	public Long getImei() {
+		return imei;
+	}
+
+	public void setImei(Long imei) {
+		this.imei = imei;
+	}
 
 	@Override
     public String toString() {
-        return "Phieubansanpham{" + "maphienbansp=" + maphienbansp + ", masp=" + masp + ", ram=" + ram + ", rom=" + rom + ", mausac=" + mausac + ", gianhap=" + gianhap + ", giaxuat=" + giaxuat + ", soluongton=" + soluongton + '}';
+        return ram+"GB - "+rom+"GB - "+color;
     }
 
     

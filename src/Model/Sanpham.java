@@ -78,6 +78,27 @@ public class Sanpham {
 			this.soluongton=soluongton;
 			this.hinhanh=hinhanh;
 		}
+		public Sanpham(int masp) {
+        	this.masp=masp;
+        }
+		
+		
+		public Sanpham(int masp, String tensp, String hinhanh, int xuatxu, int dungluongpin, double kichthuocman, int hedieuhanh, int phienbanhdh, String camerasau, String cameratruoc, int thoigianbaohanh, int thuonghieu, int khuvuckho, int soluongton) {
+	        this.masp = masp;
+	        this.tensp = tensp;
+	        this.hinhanh = hinhanh;
+	        this.xuatxu = xuatxu;
+	        this.dungluongpin = dungluongpin;
+	        this.kichthuocman = kichthuocman;
+	        this.hedieuhanh = hedieuhanh;
+	        this.phienbanhdh = phienbanhdh;
+	        this.camerasau = camerasau;
+	        this.cameratruoc = cameratruoc;
+	        this.thoigianbaohanh = thoigianbaohanh;
+	        this.thuonghieu = thuonghieu;
+	        this.khuvuckho = khuvuckho;
+	        this.soluongton = soluongton;
+	    }
 		public Sanpham(int masp, String tensp, String hinhanh, int xuatxu, int dungluongpin, double kichthuocman, int hedieuhanh, int phienbanhdh, String camerasau, String cameratruoc, int thoigianbaohanh, int thuonghieu, int khuvuckho, int soluongton,int trangthai) {
 	        this.masp = masp;
 	        this.tensp = tensp;

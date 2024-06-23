@@ -48,7 +48,12 @@ public class Khachhang {
 	        this.diachi = diachi;
 	        this.ngaythamgia = ngaythamgia;
 	    }
-
+	    public Khachhang(int maKH, String hoten, String diachi, String sdt) {
+	        this.maKH = maKH;
+	        this.hoten = hoten;
+	        this.sdt = sdt;
+	        this.diachi = diachi;
+	    }
 	    public LocalDateTime getNgaythamgia() {
 	        return ngaythamgia;
 	    }

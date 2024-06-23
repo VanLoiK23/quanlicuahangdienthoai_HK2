@@ -100,6 +100,6 @@ public class Nhacungcap {
 
 	@Override
     public String toString() {
-        return "Nhacungcap{" + "mancc=" + mancc + ", tenncc=" + tenncc + ", diachi=" + diachi + ", email=" + email + ", sdt=" + sdt + '}';
+        return tenncc;
     }
 }
