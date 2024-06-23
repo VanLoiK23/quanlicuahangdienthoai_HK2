@@ -3,6 +3,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -69,6 +70,19 @@ public class color_DAO implements DAOInterface<Color>{
 	@Override
 	public ObservableList<Color> selectAll() {
 		ObservableList<Color> check = FXCollections.observableArrayList();
+	    try {
+	        Session session = Hibernate_util.getSessionFactory().openSession();
+	        List<Color> result = session.createQuery("FROM Color ORDER BY mamau ASC", Color.class).list(); 
+	        check.addAll(result);
+	        session.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return check;
+	}
+	
+	public ArrayList<Color> select() {
+		ArrayList<Color> check = new ArrayList();
 	    try {
 	        Session session = Hibernate_util.getSessionFactory().openSession();
 	        List<Color> result = session.createQuery("FROM Color ORDER BY mamau ASC", Color.class).list(); 

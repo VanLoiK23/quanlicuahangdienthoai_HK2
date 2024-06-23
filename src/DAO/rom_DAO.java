@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -79,6 +80,19 @@ public class rom_DAO implements DAOInterface<Rom>{
 	    }
 	    return check;
 	}
+	public ArrayList<Rom> select() {
+		ArrayList<Rom> check = new ArrayList();
+	    try {
+	        Session session = Hibernate_util.getSessionFactory().openSession();
+	        List<Rom> result = session.createQuery("FROM Rom", Rom.class).list(); 
+	        check.addAll(result);
+	        session.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return check;
+	}
+	
 	@Override
 	public Rom selectByName(Rom t) {
 		return null;

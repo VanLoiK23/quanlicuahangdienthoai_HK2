@@ -1,7 +1,9 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,11 @@ import org.hibernate.query.Query;
 import AtttributeSanPham.Color;
 import AtttributeSanPham.Thuonghieu;
 import ConnectMysql.Connectmysql;
+import Model.ChitietPhieuNhap;
+import Model.ChitietPhieuXuat;
+import Model.ChitietSanpham;
 import Model.Khuvuckho;
+import Model.Phieubansanpham;
 import Model.Sanpham;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,17 +57,73 @@ public class Sanpham_DAO implements DAOInterface<Sanpham>{
 	    }
 	    return check;
 	}
+	
+	public int updatesl(Sanpham t) {
+	    int check = 0;
+	    try {
+	        Session session = Hibernate_util.getSessionFactory().openSession();
+	        Transaction tx = session.beginTransaction();
+	        
+	        Query query = session.createQuery(
+	            "UPDATE Sanpham sp " +
+	            "SET sp.soluongton =" +
+	            "    (SELECT SUM(pbsp.soluongton) " +
+	            "     FROM Phieubansanpham pbsp " +
+	            "     WHERE pbsp.masp = :masp) " +
+	            "WHERE sp.masp = :masp");
+	        query.setParameter("masp", t.getMasp());
+	        
+	        int rowCount = query.executeUpdate();
+	        
+	        tx.commit();
+	        session.close();
+	        
+	        if (rowCount > 0) {
+	            check = 1;
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return check;
+	}
 
-	@Override
+
 	public int delete(Sanpham t) {
 	    int check = 0;
 	    try {
 	        Session session = Hibernate_util.getSessionFactory().openSession();
 	        Transaction tx = session.beginTransaction();
-	        session.delete(t); 
+ 
+	        List<Phieubansanpham> phieubansanphams = session.createQuery("FROM Phieubansanpham WHERE masp = :masp", Phieubansanpham.class)
+	                                                .setParameter("masp", t.getMasp())
+	                                                .list();
+	        for (Phieubansanpham phieu : phieubansanphams) {
+	        	 List<ChitietSanpham> ctsanpham = session.createQuery("FROM ChitietSanpham WHERE maphienbansp = :maphienbansp", ChitietSanpham.class)
+	                     .setParameter("maphienbansp", phieu.getMaphienbansp())
+	                     .list();
+	             for (ChitietSanpham ct : ctsanpham) {
+	                  session.delete(ct);
+	              }
+	             List<ChitietPhieuNhap> ctphieunhap = session.createQuery("FROM ChitietPhieuNhap WHERE maphienbansp = :maphienbansp", ChitietPhieuNhap.class)
+	                     .setParameter("maphienbansp", phieu.getMaphienbansp())
+	                     .list();
+	             for (ChitietPhieuNhap ctn : ctphieunhap) {
+	                  session.delete(ctn);
+	              }
+	             List<ChitietPhieuXuat> ctphieuxuat = session.createQuery("FROM ChitietPhieuXuat WHERE maphienbansp = :maphienbansp", ChitietPhieuXuat.class)
+	                     .setParameter("maphienbansp", phieu.getMaphienbansp())
+	                     .list();
+	             for (ChitietPhieuXuat ctx : ctphieuxuat) {
+	                  session.delete(ctx);
+	              }
+	            session.delete(phieu);
+	        }
+
+	        session.delete(t);
+
 	        tx.commit();
 	        session.close();
-	        check = 1; 
+	        check = 1;
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
@@ -168,6 +230,39 @@ public class Sanpham_DAO implements DAOInterface<Sanpham>{
         }
         return check;
     }
+    
+    public Sanpham selectByPhienBan(String t) {
+        Sanpham result = null;
+        try {
+            Connection con = (Connection) Connectmysql.getConnection();
+            String sql = "SELECT * FROM sanpham sp join phienbansanpham pb on sp.masp=pb.masp WHERE maphienbansp=?";
+            PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql);
+            pst.setString(1, t);
+            ResultSet rs = (ResultSet) pst.executeQuery();
+            while (rs.next()) {
+                int madm = rs.getInt("masp");
+                String tendm = rs.getString("tensp");
+                String hinhanh = rs.getString("hinhanh");
+                int xuatxu = rs.getInt("xuatxu");
+                int dungluongpin = rs.getInt("dungluongpin");
+                double kichthuocman = rs.getDouble("kichthuocman");
+                int hedieuhanh = rs.getInt("hedieuhanh");
+                int phienbanhdh = rs.getInt("phienbanhdh");
+                String camerasau = rs.getString("camerasau");
+                String cameratruoc = rs.getString("cameratruoc");
+                int thoigianbaohanh = rs.getInt("thoigianbaohanh");
+                int thuonghieu = rs.getInt("thuonghieu");
+                int khuvuckho = rs.getInt("khuvuckho");
+                int soluongton = rs.getInt("soluongton");
+                result = new Sanpham(madm, tendm, hinhanh, xuatxu, dungluongpin, kichthuocman, hedieuhanh, phienbanhdh, camerasau, cameratruoc, thoigianbaohanh, thuonghieu, khuvuckho, soluongton);
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return result;
+    }
+    
     public boolean isTenSPExists(String tenSP) {
         boolean exists = false;
         try {

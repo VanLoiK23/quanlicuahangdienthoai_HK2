@@ -97,9 +97,9 @@ public class Account_DAO {
 	public boolean khachhang(Taikhoan t) {
 	    boolean check = false;
 	    try (Session session = Hibernate_util.getSessionFactory().openSession()) {
-	        String hql = "SELECT COUNT(*) FROM Taikhoan WHERE BINARY username = :username AND matkhau = :matkhau";
+	        String hql = "SELECT COUNT(*) FROM Taikhoan WHERE LOWER(username) = :username AND matkhau = :matkhau";
 	        Query<Long> query = session.createQuery(hql, Long.class);
-	        query.setParameter("username", t.getUsername());
+	        query.setParameter("username", t.getUsername().toLowerCase()); 
 	        query.setParameter("matkhau", t.getMatkhau());
 	        
 	        Long count = query.uniqueResult();
@@ -112,23 +112,25 @@ public class Account_DAO {
 	    return check;
 	}
 
+
 	public boolean admin(Taikhoan t) {
-	    boolean check = false;
-	    try (Session session = Hibernate_util.getSessionFactory().openSession()) {
-	        String hql = "SELECT COUNT(*) FROM Taikhoan WHERE BINARY username = :username AND matkhau = :matkhau AND vaitro = 'admin'";
-	        Query<Long> query = session.createQuery(hql, Long.class);
-	        query.setParameter("username", t.getUsername());
-	        query.setParameter("matkhau", t.getMatkhau());
-	        
-	        Long count = query.uniqueResult();
-	        if (count != null && count > 0) {
-	            check = true;
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return check;
-	}
+		    boolean check = false;
+		    try (Session session = Hibernate_util.getSessionFactory().openSession()) {
+		        String hql = "SELECT COUNT(*) FROM Taikhoan WHERE LOWER(username) = :username AND matkhau = :matkhau AND vaitro= 'admin'";
+		        Query<Long> query = session.createQuery(hql, Long.class);
+		        query.setParameter("username", t.getUsername().toLowerCase()); // Chuyển username về chữ thường
+		        query.setParameter("matkhau", t.getMatkhau());
+		        
+		        Long count = query.uniqueResult();
+		        if (count != null && count > 0) {
+		            check = true;
+		        }
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+		    return check;
+		}
+
 
 	public ObservableList<Khachhang> selectAll() {
 		ObservableList<Khachhang> check = FXCollections.observableArrayList();

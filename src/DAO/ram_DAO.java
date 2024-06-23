@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -10,6 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import AtttributeSanPham.Ram;
+import AtttributeSanPham.Rom;
 import ConnectMysql.Connectmysql;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -77,6 +79,18 @@ public class ram_DAO implements DAOInterface<Ram>{
 	    return check;
 	}
 
+	public ArrayList<Ram> select() {
+		ArrayList<Ram> check = new ArrayList();
+	    try {
+	        Session session = Hibernate_util.getSessionFactory().openSession();
+	        List<Ram> result = session.createQuery("FROM Ram", Ram.class).list(); 
+	        check.addAll(result);
+	        session.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return check;
+	}
 
 	@Override
 	public Ram selectByName(Ram t) {
