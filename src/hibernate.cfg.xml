@@ -19,19 +19,15 @@
         <property name="hibernate.format_sql">false</property>
 
 
-        <mapping class="AtttributeSanPham.Ram"/>
-        <mapping class="AtttributeSanPham.Rom"/>
-        <mapping class="AtttributeSanPham.Thuonghieu"/>
-        <mapping class="AtttributeSanPham.Xuatxu"/>
-        <mapping class="AtttributeSanPham.Hedieuhanh"/>
-        <mapping class="AtttributeSanPham.Color"/>
-        <mapping class="Model.Nhacungcap"/>
-        <mapping class="Model.Khuvuckho"/>
-        <mapping class="Model.Sanpham"/>
-        <mapping class="Model.Taikhoan"/>
-        <mapping class="Model.Khachhang"/>
-        <mapping class="Model.Phieubansanpham"/>
+       
+
+        <mapping class="ModelUserPhone.Phieubansanpham"/>
+        <mapping class="ModelUserPhone.PhieuXuat"/>
+         <mapping class="ModelUserPhone.ChitietPhieuXuat"/>
+          <mapping class="ModelUserPhone.ChitietSanpham"/>
+          <mapping class="ModelUserPhone.Taikhoan"/>
+          <mapping class="ModelUserPhone.Khachhang"/>
+          <mapping class="ModelUserPhone.modelsanpham"/>
         
-        
-    </session-factory>
+     </session-factory>
 </hibernate-configuration>

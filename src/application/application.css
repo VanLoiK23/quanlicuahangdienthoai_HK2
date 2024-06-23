@@ -1,0 +1,8 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.bgitem{
+	-fx-background-color:linear-gradient(to bottom right,#FF0000,#CCCCCC);
+}
+.bgcolor{
+		-fx-background-color:linear-gradient(to bottom right,#2f466b,#662d60);
+}
